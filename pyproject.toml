@@ -1,0 +1,19 @@
+[build-system]
+requires = ["flit_core >=3.2,<4"]
+build-backend = "flit_core.buildapi"
+
+[project]
+name = "my_universal_auth"
+authors = [
+    {name = "Tirath", email = "test@example.com"}
+]
+description = "Universal OAuth for Multiple Sites"
+requires-python = ">=3.10"
+dynamic = ["version"]
+
+[tool.flit.module]
+name = "my_universal_auth"
+
+# Yeh section Frappe Cloud ke liye mandatory hai
+[tool.bench.frappe-dependencies]
+frappe = ">=14.0.0"
