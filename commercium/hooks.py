@@ -1,6 +1,6 @@
-app_name = "commercium"
+app_name = "Commercium"
 app_title = "Commercium"
-app_publisher = "Shubham Bajpayee"
+app_publisher = "Shubham Vajpayee"
 app_description = "OAuth for Multiple Sites"
 app_email = "help@mycommercium.com"
 app_license = "MIT"

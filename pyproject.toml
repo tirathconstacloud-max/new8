@@ -5,26 +5,10 @@ build-backend = "flit_core.buildapi"
 [project]
 name = "commercium"
 authors = [
-    {name = "Shubham Bajpayee", email = "help@mycommercium.com"}
+    {name = "Shubham Vajpayee", email = "help@mycommercium.com"}
 ]
 
-description = "Connect ERPNext with 200+ markets and eCommerce platforms to sync inventory orders and shipments Commercium integrates ERPNext with 200+ marketplaces like Noon, Mirakl, Amazon, Temu, Shein, Kogan, Whatnot, Discogs, Flipkart, Iconic, The Range, Backmarket, Bandcamp, B&Q, Galaxus / Digitec, Wayfair, OnBuy, Farfetch, eBay, TikTok Shop, Reverb, Not On The High Street (NOTHs), CDiscount, Fruugo, Abebooks, Emag, Faire, Vivino, Walmart, Refurbed, Gunbroker, Groupon, Target Plus, Poshmark, Zalora, Jumia Vendor, Trademe, CDON, Shopee, Neto by Maropost, Allegro, Kaufland, Trendyol, Depop, Bol, Namshi, and more.It also supports leading eCommerce platforms like Prestashop, ECWID, Shopify, WIX, BigCommerce, WooCommerce, Magento 2, Salla, Lightspeed, Commerce7, Retailer Networks such as CommerceHub / Rithum / Dsco, Rithum / OrderStream, Lowes, Logic Broker, Home Depot, and Accounting & Shipping tools including QuickBooks Online, ShipStation, Royal Mail, Flexport, Amazon MCF, Veeqo, Shiphero, Shipbob, and more, all using one single connector.
-
-Features:
-
-Order Sync – Automatically push marketplace orders to ERPNext
-Product Sync – Push Product to connected sales channels
-Inventory Sync – Push updated stock levels to connected sales channels
-Cancellation Sync – Sync order cancellations to ERPNext in real time
-Refund Sync – Sync refund details from marketplaces to ERPNext
-Shipment Sync – Send shipment and tracking updates back to sales channels
-
-Why Choose Commercium for ERPNext Integration?
-
-Effortlessly connect your ERPNext store to 200+ popular marketplaces like Miravia, Lazada, Etsy, and many more
-Reduce costs by eliminating the need for separate connectors, and manage your entire marketplace operation from a single, intuitive dashboard.
-Personalized support to help your business thrive across multiple platforms, ensuring your data is protected with strong encryption and the latest security protocols.
-Quick onboarding with expert guidance to integrate your ERPNext with multiple platforms efficiently."
+description = "Connect Amazon, Temu , Miraki, TikTokShop, Shopify, Woocommerce, Wix and more with ERPNext. No more costly, separate connectors are needed."
 
 requires-python = ">=3.10"
 dynamic = ["version"]
