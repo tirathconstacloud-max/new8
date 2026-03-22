@@ -1,10 +1,21 @@
 import frappe
+from frappe import _
 import hashlib
 import hmac
 import json
 import time
+import os
 
-SECRET_KEY = "766618ed9ac8c6067e8195853068abd4e3573883ee27299fed747d36fc8a2314"
+
+def _get_secret_key() -> str:
+    """Get Commercium secret key from site config or environment."""
+    key = frappe.conf.get("commercium_secret_key") or os.environ.get("COMMERCIUM_SECRET_KEY")
+    if not key or not isinstance(key, str):
+        frappe.throw(
+            _("Commercium secret key not configured. Add 'commercium_secret_key' to site_config.json or set COMMERCIUM_SECRET_KEY env var.")
+        )
+    return key
+
 
 @frappe.whitelist()
 def connect_to_commercium():
@@ -21,7 +32,7 @@ def connect_to_commercium():
     payload_str = json.dumps(payload, separators=(',', ':'))
 
     signature = hmac.new(
-        SECRET_KEY.encode(),
+        _get_secret_key().encode(),
         payload_str.encode(),
         hashlib.sha256
     ).hexdigest()
