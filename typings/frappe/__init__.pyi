@@ -12,14 +12,23 @@ def throw(msg: str, exc: type[BaseException] | None = None) -> NoReturn: ...
 
 conf: Dict[str, Any]  # site_config.json
 
+class _Database:
+    def exists(self, doctype: str, name: str) -> bool: ...
+
+db: _Database
+
 class _Session:
     user: str
 
 session: _Session
 
-def get_doc(doctype: str, name: str) -> Any: ...
+def get_doc(*args: Any, **kwargs: Any) -> Any: ...
+
+class _LoginManager:
+    def login_as(self, user: str) -> None: ...
 
 class _Local:
     site: str
+    login_manager: _LoginManager
 
 local: _Local
