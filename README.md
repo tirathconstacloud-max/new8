@@ -1,6 +1,6 @@
 ### Commercium
 
-Connect ERPNext with 200+ markets and eCommerce platforms to sync inventory orders and shipments Commercium integrates ERPNext with 200+ marketplaces like Noon, Mirakl, Amazon, Temu, Shein, Kogan, Whatnot, Discogs, Flipkart, Iconic, The Range, Backmarket, Bandcamp, B&Q, Galaxus / Digitec, Wayfair, OnBuy, Farfetch, eBay, TikTok Shop, Reverb, Not On The High Street (NOTHs), CDiscount, Fruugo, Abebooks, Emag, Faire, Vivino, Walmart, Refurbed, Gunbroker, Groupon, Target Plus, Poshmark, Zalora, Jumia Vendor, Trademe, CDON, Shopee, Neto by Maropost, Allegro, Kaufland, Trendyol, Depop, Bol, Namshi, and more.It also supports leading eCommerce platforms like Prestashop, ECWID, Shopify, WIX, BigCommerce, WooCommerce, Magento 2, Salla, Lightspeed, Commerce7, Retailer Networks such as CommerceHub / Rithum / Dsco, Rithum / OrderStream, Lowes, Logic Broker, Home Depot, and Accounting & Shipping tools including QuickBooks Online, ShipStation, Royal Mail, Flexport, Amazon MCF, Veeqo, Shiphero, Shipbob, and more, all using one single connector.
+Connect ERPNext with Commercium Platform
 
 ### Installation
 
@@ -28,14 +28,10 @@ Pre-commit is configured to use the following tools for checking and formatting 
 - prettier
 - pyupgrade
 
-### CI
-
-This app can use GitHub Actions for CI. The following workflows are configured:
-
-- CI: Installs this app and runs unit tests on every push to `develop` branch.
-- Linters: Runs [Frappe Semgrep Rules](https://github.com/frappe/semgrep-rules) and [pip-audit](https://pypi.org/project/pip-audit/) on every pull request.
-
-
 ### License
 
 mit
+
+# credentials
+Username: Administrator
+Password: Yash@123

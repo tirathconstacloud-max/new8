@@ -3,7 +3,7 @@ name = "commercium"
 authors = [
     { name = "Shubham Vajpayee", email = "help@mycommercium.com"}
 ]
-description = "Connect ERPNext with 200+ markets and eCommerce platforms to sync inventory orders and shipments Commercium integrates ERPNext with 200+ marketplaces like Noon, Mirakl, Amazon, Temu, Shein, Kogan, Whatnot, Discogs, Flipkart, Iconic, The Range, Backmarket, Bandcamp, B&Q, Galaxus / Digitec, Wayfair, OnBuy, Farfetch, eBay, TikTok Shop, Reverb, Not On The High Street (NOTHs), CDiscount, Fruugo, Abebooks, Emag, Faire, Vivino, Walmart, Refurbed, Gunbroker, Groupon, Target Plus, Poshmark, Zalora, Jumia Vendor, Trademe, CDON, Shopee, Neto by Maropost, Allegro, Kaufland, Trendyol, Depop, Bol, Namshi, and more.It also supports leading eCommerce platforms like Prestashop, ECWID, Shopify, WIX, BigCommerce, WooCommerce, Magento 2, Salla, Lightspeed, Commerce7, Retailer Networks such as CommerceHub / Rithum / Dsco, Rithum / OrderStream, Lowes, Logic Broker, Home Depot, and Accounting & Shipping tools including QuickBooks Online, ShipStation, Royal Mail, Flexport, Amazon MCF, Veeqo, Shiphero, Shipbob, and more, all using one single connector."
+description = "Connect ERPNext with Commercium Platform"
 requires-python = ">=3.10"
 readme = "README.md"
 dynamic = ["version"]

@@ -1,7 +1,7 @@
 app_name = "commercium"
 app_title = "Commercium"
 app_publisher = "Shubham Vajpayee"
-app_description = "Connect ERPNext with 200+ markets and eCommerce platforms to sync inventory orders and shipments Commercium integrates ERPNext with 200+ marketplaces like Noon, Mirakl, Amazon, Temu, Shein, Kogan, Whatnot, Discogs, Flipkart, Iconic, The Range, Backmarket, Bandcamp, B&Q, Galaxus / Digitec, Wayfair, OnBuy, Farfetch, eBay, TikTok Shop, Reverb, Not On The High Street (NOTHs), CDiscount, Fruugo, Abebooks, Emag, Faire, Vivino, Walmart, Refurbed, Gunbroker, Groupon, Target Plus, Poshmark, Zalora, Jumia Vendor, Trademe, CDON, Shopee, Neto by Maropost, Allegro, Kaufland, Trendyol, Depop, Bol, Namshi, and more.It also supports leading eCommerce platforms like Prestashop, ECWID, Shopify, WIX, BigCommerce, WooCommerce, Magento 2, Salla, Lightspeed, Commerce7, Retailer Networks such as CommerceHub / Rithum / Dsco, Rithum / OrderStream, Lowes, Logic Broker, Home Depot, and Accounting & Shipping tools including QuickBooks Online, ShipStation, Royal Mail, Flexport, Amazon MCF, Veeqo, Shiphero, Shipbob, and more, all using one single connector."
+app_description = "Connect ERPNext with Commercium Platform"
 app_email = "help@mycommercium.com"
 app_license = "mit"
 
@@ -83,7 +83,8 @@ app_license = "mit"
 # ------------
 
 # before_install = "commercium.install.before_install"
-after_install = "commercium.after_install.generate_and_send_api_credentials"
+# after_install = "commercium.install.after_install"
+
 
 # Uninstallation
 # ------------
@@ -137,13 +138,13 @@ after_install = "commercium.after_install.generate_and_send_api_credentials"
 # ---------------
 # Hook on document methods and events
 
-# doc_events = {
+doc_events = {
 # 	"*": {
 # 		"on_update": "method",
 # 		"on_cancel": "method",
 # 		"on_trash": "method"
 # 	}
-# }
+}
 
 # Scheduled Tasks
 # ---------------
