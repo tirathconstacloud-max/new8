@@ -12,6 +12,39 @@ def _get_secret_key():
     """Load or create the Commercium secret key at runtime."""
     return generate_secret_key()
 
+
+def _write_commercium_log(message, level="INFO"):
+    """Write integration logs to dedicated site log files."""
+    try:
+        timestamp = datetime.now(timezone.utc).isoformat()
+        line = f"[{timestamp}] [{level}] {message}\n"
+
+        log_dirs = [
+            Path(frappe.get_site_path("private", "logs", "commercium")),
+            Path(frappe.get_site_path("logs", "commercium")),
+        ]
+
+        for log_dir in log_dirs:
+            log_dir.mkdir(parents=True, exist_ok=True)
+            log_file = log_dir / "external_connection.log"
+            with log_file.open("a", encoding="utf-8") as handle:
+                handle.write(line)
+    except Exception:
+        # Never break API flow because of log write failures.
+        pass
+
+@frappe.whitelist()
+def after_install():
+    try:
+        secret_key = _get_secret_key()
+        site_url = get_url()
+        external_response = send_external_connection(secret_key, site_url)
+        if external_response is None:
+            frappe.throw("External connection response is empty")
+    except Exception:
+        frappe.log_error(frappe.get_traceback(), "Disconnect from Commercium Error")
+        frappe.throw("Something went wrong while disconnecting from Commercium")
+
 @frappe.whitelist()
 def connect_to_commercium():
     try:
@@ -76,7 +109,7 @@ def connect_to_commercium():
 
         encoded_site_url = urlsafe_b64encode(site_url.encode("utf-8")).decode("utf-8")
 
-        redirect_url = "https://commercium.constacloud.com/external-connection?event=signup&site_url={}&platform=ERPNEXT&token={}".format(
+        redirect_url = "https://react2.constacloud.com/external-connection?event=signup&site_url={}&platform=ERPNEXT&token={}".format(
             encoded_site_url,
             token
         )
@@ -90,6 +123,10 @@ def connect_to_commercium():
         raise
     except Exception:
         frappe.log_error(frappe.get_traceback(), "Commercium Connection Error")
+        _write_commercium_log(
+            f"connect_to_commercium failed: {frappe.get_traceback()}",
+            level="ERROR",
+        )
         frappe.throw("Something went wrong while connecting to Commercium")
 
 @frappe.whitelist()
@@ -135,9 +172,19 @@ def generate_secret_key():
 @frappe.whitelist()
 def send_external_connection(secret_key, site_url):
     try:
-        url = f"https://whk.co.in/register-external-app/QkRDWENITk9FbS9uZWd3bFNJckxqTmJCbWpGbUpJWk9sODZMbFIvaFNzYz0=?site_url={site_url}&secret_key={secret_key}"
-
-        response = requests.get(url, timeout=20)
+        # url = f"https://whk.co.in/register-external-app/QkRDWENITk9FbS9uZWd3bFNJckxqTmJCbWpGbUpJWk9sODZMbFIvaFNzYz0=?site_url={site_url}&secret_key={secret_key}"
+        
+        url = "https://whk.co.in/register-external-app"
+        payload = {
+            "site_url": site_url, 
+            "secret_key": secret_key,
+            "token": "QkRDWENITk9FbS9uZWd3bFNJckxqTmJCbWpGbUpJWk9sODZMbFIvaFNzYz0="
+        }
+        _write_commercium_log(
+            f"Outgoing request to register-external-app for site_url={site_url}",
+            level="INFO",
+        )
+        response = requests.post(url, timeout=20, json=payload)
 
         if response.status_code in (200, 201):
             if not response.text:
@@ -149,7 +196,11 @@ def send_external_connection(secret_key, site_url):
                 return {"status": "success", "raw_response": response.text}
 
         error_message = f"External API call failed with status {response.status_code}"
-        
+        _write_commercium_log(
+            f"Non-200 response status={response.status_code}, "
+            f"body={response.text[:2000]}",
+            level="ERROR",
+        )
         if response.text:
             try:
                 error_payload = response.json()
@@ -176,5 +227,5 @@ def send_external_connection(secret_key, site_url):
             title="External Connection API Error",
             message=str(e)
         )
-    
+        _write_commercium_log(f"Request exception: {str(e)}", level="ERROR")
         frappe.throw(f"API Request Failed: {str(e)}")

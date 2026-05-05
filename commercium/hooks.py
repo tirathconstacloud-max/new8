@@ -83,7 +83,7 @@ app_license = "mit"
 # ------------
 
 # before_install = "commercium.install.before_install"
-# after_install = "commercium.install.after_install"
+after_install = "commercium.api.after_install"
 
 
 # Uninstallation
