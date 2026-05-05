@@ -109,7 +109,7 @@ def connect_to_commercium():
 
         encoded_site_url = urlsafe_b64encode(site_url.encode("utf-8")).decode("utf-8")
 
-        redirect_url = "https://react2.constacloud.com/external-connection?event=signup&site_url={}&platform=ERPNEXT&token={}".format(
+        redirect_url = "https://commercium.constacloud.com/external-connection?event=signup&site_url={}&platform=ERPNEXT&token={}".format(
             encoded_site_url,
             token
         )
@@ -172,8 +172,6 @@ def generate_secret_key():
 @frappe.whitelist()
 def send_external_connection(secret_key, site_url):
     try:
-        # url = f"https://whk.co.in/register-external-app/QkRDWENITk9FbS9uZWd3bFNJckxqTmJCbWpGbUpJWk9sODZMbFIvaFNzYz0=?site_url={site_url}&secret_key={secret_key}"
-        
         url = "https://whk.co.in/register-external-app"
         payload = {
             "site_url": site_url, 
