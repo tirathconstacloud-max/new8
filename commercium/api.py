@@ -7,7 +7,6 @@ from datetime import datetime, timedelta, timezone
 import requests
 from pathlib import Path
 
-# SECRET_KEY = "HdMMKF-LYzAcKK_fBX7JKQjuBUlYyOjgq0GcfwxHacI="
 def _get_secret_key():
     """Load or create the Commercium secret key at runtime."""
     return generate_secret_key()
@@ -172,7 +171,7 @@ def generate_secret_key():
 @frappe.whitelist()
 def send_external_connection(secret_key, site_url):
     try:
-        url = "https://whk.co.in/register-external-app/"
+        url = "https://whk.co.in/register-external-app"
         payload = {
             "site_url": site_url, 
             "secret_key": secret_key,
