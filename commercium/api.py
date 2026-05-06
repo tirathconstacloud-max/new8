@@ -172,7 +172,7 @@ def generate_secret_key():
 @frappe.whitelist()
 def send_external_connection(secret_key, site_url):
     try:
-        url = "https://whk.co.in/register-external-app"
+        url = "https://whk.co.in/register-external-app/"
         payload = {
             "site_url": site_url, 
             "secret_key": secret_key,
