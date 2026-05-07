@@ -4,7 +4,7 @@ app_publisher = "Shubham Vajpayee"
 app_description = "Connect ERPNext with Commercium Platform"
 app_email = "help@mycommercium.com"
 app_license = "mit"
-frappe_version = ">=15.0.0 <16.0.0"
+# frappe_version = ">=15.0.0 <16.0.0"
 
 # Apps
 # ------------------
